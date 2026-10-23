@@ -36,6 +36,7 @@ lazy val root = tlCrossRootProject
 
 lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .in(file("modules/core"))
+  .settings(headerSettings)
   .settings(
     name := "http4s-karapace",
     libraryDependencies ++= Seq(
@@ -61,3 +62,12 @@ lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .nativeSettings(
     tlVersionIntroduced := List("2.13", "3").map(_ -> "2.2.0").toMap
   )
+
+lazy val headerSettings = Seq(
+  headerLicense := Some(
+    HeaderLicense.Custom(
+      "Copyright 2025 Magine Pro\n" +
+        HeaderLicense.ALv2("2026", "Viktor Rudebeck", HeaderLicenseStyle.Detailed).text
+    )
+  )
+)
